@@ -1,0 +1,73 @@
+Steps to connect to H2
+
+1. adding below dependencies 
+
+com.h2database
+javax.persistence-api oR jakarta.persistence-api
+spring-boot-starter-data-jpa
+optional: spring-boot-starter-data-jdbc
+
+2. application property: spring.h2.console.enabled=true
+
+3. configure static URL: spring.datasource.url=jdbc:h2:mem:testdb
+
+4. create a table in H2 using schema.sql under application src/main/resources
+
+
+
+create table post (
+
+
+
+	id bigint not null,
+
+	title varchar(255) not null,
+
+	description varchar(255) not null,
+
+	contents varchar(255) not null,
+
+	primary key (id)
+
+	
+
+);
+
+
+
+5. create some data for table - data.sql under application src/main/resources
+
+insert into post(id, title, description, contents)
+values (1, 'post1', 'post one', 'contents one');
+insert into post(id, title, description, contents)
+values (2, 'post2', 'post two', 'contents two');
+insert into post(id, title, description, contents)
+values (3, 'post3', 'post three', 'contents three');
+
+Extra notes - https://medium.com/@nutanbhogendrasharma/using-jpa-to-create-and-access-a-database-part-4-3363f92fe9d9
+
+
+
+logging.level.root=DEBUG
+
+#datadource
+
+spring.datasource.url=jdbc:mysql://localhost:3306/bookdb
+
+spring.datasource.username=root
+
+spring.datasource.password=
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+#Jpa/Hibernate :
+
+spring.jpa.show-sql=true
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+
+spring.jpa.hibernate.ddl-auto = update
+
+
+
+
